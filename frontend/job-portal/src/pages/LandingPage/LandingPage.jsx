@@ -1,8 +1,15 @@
 import React from 'react'
+import Header from './components/Header';
+import { useNavigate } from 'react-router-dom';
+import Hero from './components/Hero';
 
 const LandingPage = () => {
+
   return (
-    <div>LandingPage</div>
+    <div className='min-h-screen'>
+      <Header />
+      <Hero />
+    </div>
   )
 }
 
