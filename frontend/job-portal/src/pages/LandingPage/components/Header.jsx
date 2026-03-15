@@ -22,7 +22,7 @@ const Header = () => {
                             <Briefcase className='w-5 h-5 text-white'/>
                         </div>
                         <span className='text-xl font-bold text-gray-900'>
-                            JobPortal
+                            JobYourLove
                         </span>
                     </div>
                     <nav className='hidden md:flex items-center space-x-8'>

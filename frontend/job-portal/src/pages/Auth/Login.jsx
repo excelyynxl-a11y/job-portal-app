@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion';
-import { AlertCircle, Eye, EyeOff, Loader, Lock, Mail } from 'lucide-react';
+import { AlertCircle, CheckCircle, Eye, EyeOff, Loader, Lock, Mail } from 'lucide-react';
+import { validateEmail } from '../../utils/helper';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -15,20 +16,6 @@ const Login = () => {
     showPassword: false,
     success: false 
   });
-
-  // validation function 
-  const validateEmail = (email) => {
-    if (!email.trim()) {
-      return 'Email is required';
-    };
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return 'Please enter a vailid email address.'
-    }
-
-    return '';
-  };
 
   const validatePassword = (password) => {
     if (!password) {
@@ -90,6 +77,31 @@ const Login = () => {
     }
   };
 
+  // login successful popup
+  if (formState.success) {
+    return (
+      <div className='min-h-screen flex items-center justify-center bg-gray-50 px-4'>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1}}
+          className='bg-white p-8 rounded-xl shadow-lg max-w-md w-full text-center'
+        >
+          <CheckCircle className='w-16 h-16 text-green-500 mx-auto mb-4' />
+          <h2 className='text-2xl font-bold text-gray-900 mb-2'>
+            Welcome Back!
+          </h2>
+          <p className='text-gray-600 mb-4'>
+            You have been successfully logged in.
+          </p>
+          <div className='animate-spin w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full mx-auto' />
+          <p className='text-sm text-gray-500 mt-2'>
+            Redirecting to your dashboard... 
+          </p>
+        </motion.div>
+      </div>
+    );
+  };
+
   return (
     <div className='min-h-screen flex items-center justify-center bg-gray-50 px-4'>
       <motion.div 
@@ -103,7 +115,7 @@ const Login = () => {
             Welcome Back 
           </h2>
           <p className='text-gray-600'>
-            Sign in to your JobPortal account
+            Sign in to your JobYourLove account
           </p>
         </div>
 
@@ -134,7 +146,7 @@ const Login = () => {
             </div>
             {formState.errors.email && (
               <p className='text-red-500 text-sm mt-1 flex items-center'>
-                <AlertCircle className='' />
+                <AlertCircle className='w-4 h-4 mr-1' />
                 {formState.errors.email}
               </p>
             )}
@@ -189,7 +201,7 @@ const Login = () => {
           {/* submit error */}
           {formState.errors.submit && (
             <div className='bg-red-50 border border-red-200 rounded-lg p-3'>
-              <p className='text-red-200 text-sm flex items-center'>
+              <p className='text-red-700 text-sm flex items-center'>
                 <AlertCircle className='w-4 h-4 mr-2' />
                 {formState.errors.submit}
               </p>
