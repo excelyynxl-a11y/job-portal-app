@@ -2,6 +2,9 @@ import React from 'react'
 import Header from './components/Header';
 import { useNavigate } from 'react-router-dom';
 import Hero from './components/Hero';
+import Features from './components/Features';
+import Analytics from './components/Analytics';
+import Footer from './components/Footer';
 
 const LandingPage = () => {
 
@@ -9,6 +12,9 @@ const LandingPage = () => {
     <div className='min-h-screen'>
       <Header />
       <Hero />
+      <Features />
+      <Analytics />
+      <Footer />
     </div>
   )
 }
