@@ -2,9 +2,10 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
 // middleware to protect routes 
-const protect = async (req, resizeBy, next) => {
+const protect = async (req, res, next) => {
     try {
-        let token = req.headers.authorisation;
+        let token = req.headers.authorization;
+        console.log("Checking JWT_SECRET: ", process.env.JWT_SECRET);
 
         if (token && token.startsWith("Bearer")) {
             token = token.split(" ")[1] // extract token
@@ -14,7 +15,7 @@ const protect = async (req, resizeBy, next) => {
         } else {
             res.status(401).json({ message: "Not authorised, no token."})
         }
-    } catch (err) {
+    } catch (error) {
         res.status(401).json({ message: "Token failed", error: error.message });
     }
 };
