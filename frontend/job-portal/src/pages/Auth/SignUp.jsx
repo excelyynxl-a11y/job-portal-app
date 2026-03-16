@@ -2,8 +2,13 @@ import { AlertCircle, Building2, CheckCircle, Eye, EyeOff, Loader, Lock, Mail, U
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { validateAvatar, validateEmail, validatePassword } from '../../utils/helper';
+import uploadImage from '../../utils/uploadImage';
+import axiosInstance from '../../utils/axiosInstance';
+import { API_PATHS } from '../../utils/apiPaths';
+import { useAuth } from '../../context/AuthContext';
 
 const SignUp = () => {
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -105,6 +110,42 @@ const SignUp = () => {
     setFormState((prev) => ({ ...prev, loading: true}));
 
     try {
+      let avatarUrl = "";
+
+      // upload image if present 
+      if (formData.avatar) {
+        const imageUploadRes = await uploadImage(formData.avatar);
+        avatarUrl = imageUploadRes.imageUrl || "";
+      }
+
+      const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
+        name: formData.fullName,
+        email: formData.email,
+        password: formData.password,
+        role: formData.role,
+        avatar: avatarUrl || "",
+      });
+
+      // handle succesful registration 
+      setFormState((prev) => ({
+        ...prev, 
+        loading: false,
+        success: true,
+        error: {},
+      }));
+
+      if (token) {
+        login(response.data, token);
+
+        // redirect based on role 
+        setTimeout(() => {
+          window.location.href = 
+            formData.role === "employer" ?
+            "/employer-dashabord"
+            :
+            "/find-jobs"
+        }, 2000);
+      }
 
     } catch (error) {
       console.log('error: ', error);
@@ -134,7 +175,7 @@ const SignUp = () => {
             Account Created!
           </h2>
           <p className='text-gray-600 mb-4'>
-            Welcome to JobYourLove! Your accoutn has been created.
+            Welcome to JobYourLove! Your account has been created.
           </p>
           <div className='animate-spin w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full mx-auto' />
           <p className='text-sm text-gray-500 mt-2'>

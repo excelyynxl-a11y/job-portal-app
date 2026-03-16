@@ -19,10 +19,11 @@ import ManageJobs from "./pages/Employer/ManageJobs"
 import ApplicationViewer from "./pages/Employer/ApplicationViewer"
 import EmployerProfilePage from "./pages/Employer/EmployerProfilePage"
 import ProtectedRoute from "./routes/ProtectedRoute";
+import { AuthProvider } from "./context/AuthContext";
 
 const App = () => {
   return (
-    <div>
+    <AuthProvider>
       <Router>
         <Routes>
           {/* public routes */}
@@ -30,14 +31,14 @@ const App = () => {
           <Route path="/signUp" element={<SignUp />}/>
           <Route path="/login" element={<Login />}/>
 
-          <Route path="/find-job" element={<JobSeekerDashboard />}/>
+          <Route path="/find-jobs" element={<JobSeekerDashboard />}/>
           <Route path="/job/:jobId" element={<JobDetails />}/>
           <Route path="/saved-jobs" element={<SavedJobs />}/>
           <Route path="/profile" element={<UserProfile />}/>
 
           {/* protected routes only for employer */}
           <Route element={<ProtectedRoute requiredRole="employer" />}>
-            <Route path="/employer-dashbord" element={<EmployerDashboard />}/>
+            <Route path="/employer-dashboard" element={<EmployerDashboard />}/>
             <Route path="/post-job" element={<JobPostingForm />}/>
             <Route path="/manage-jobs" element={<ManageJobs />}/>
             <Route path="/applicants" element={<ApplicationViewer />}/>
@@ -56,7 +57,7 @@ const App = () => {
           }
         }}
       />
-    </div>
+    </AuthProvider>
   )
 }
 
