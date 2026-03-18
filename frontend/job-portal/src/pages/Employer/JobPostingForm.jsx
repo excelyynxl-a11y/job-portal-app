@@ -59,7 +59,7 @@ const JobPostingForm = () => {
 
     // create job payload before calling backend
     const jobPayload = {
-      jobTitle: formData.jobTitle,
+      title: formData.jobTitle,
       location: formData.location,
       category: formData.category,
       type: formData.jobType,
@@ -83,7 +83,7 @@ const JobPostingForm = () => {
             'Job Updated Successfully'
             :
             'Job Posted Successfully.'
-        )
+        );
         setFormData({
           jobTitle: '',
           location: '',
@@ -100,7 +100,7 @@ const JobPostingForm = () => {
 
       console.error('Unexpected response: ', response);
       toast.error('Something went wrong. Please try again.')
-    } catch (err) {
+    } catch (error) {
       if (error.response?.data?.message) {
         console.error('API Error: ', error.response.data.message);
         toast.error(error.response.data.message);
@@ -143,7 +143,7 @@ const JobPostingForm = () => {
       errors.salary = 'Maximum salary must be greater than maximum salary';
     }
 
-    console.log(errors);
+    // console.log(errors);
 
     return errors;
   }

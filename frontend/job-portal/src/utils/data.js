@@ -69,8 +69,8 @@ export const CATEGORIES = [
 
 export const JOB_TYPES = [
     { value: "Remote", label: "Remote" },
-    { value: "Full-Time", label: "Full-Time" },
-    { value: "Part-Time", label: "Part-Time" },
+    { value: "Full-time", label: "Full-time" },
+    { value: "Part-time", label: "Part-time" },
     { value: "Contract", label: "Contract" },
     { value: "Internship", label: "Internship" },
 ];
