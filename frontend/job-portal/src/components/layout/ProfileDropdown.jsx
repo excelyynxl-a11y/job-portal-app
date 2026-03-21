@@ -30,7 +30,7 @@ const ProfileDropdown = ({
                 (
                     <div className='h-8 w-8 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center'>
                         <span className='text-white font-semibold text-sm'>
-                            {companyName}
+                            {companyName.charAt(0).toUpperCase()}
                         </span>
                     </div>
                 )

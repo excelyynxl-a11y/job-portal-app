@@ -1,5 +1,6 @@
 import React from 'react'
 import DashboardLayout from '../../components/layout/DashboardLayout'
+import { Save, X } from 'lucide-react'
 
 const EditProfileDetails = ({
   formData,
@@ -13,7 +14,7 @@ const EditProfileDetails = ({
   return (
     <DashboardLayout activeMenu='company-profile'>
       {formData && (
-        <div className='min-h-screen bg-gray-50 py-8 px-4'>
+        <div className='min-h-screen bg-gray-50 py-8 px-8'>
           <div className='max-w-4xl mx-auto'>
             <div className='bg-white rounded-xl shadow-lg overflow-hidden'>
               {/* header */}
@@ -25,7 +26,7 @@ const EditProfileDetails = ({
 
               {/* edit form */}
               <div className='p-8'>
-                <div className='grid grid-cols-1 lg:grid-cols-2 gap-0'>
+                <div className='grid grid-cols-1 lg:grid-cols-2 gap-7'>
                   {/* personal information */}
                   <div className='space-y-6'>
                     <h2 className='text-lg font-medium text-gray-800 border-b pb-2'>
@@ -92,7 +93,7 @@ const EditProfileDetails = ({
 
                   {/* company information */}
                   <div className='space-y-6'>
-                    <h2 className='text-lg font-medium text-gray-800 border-b pb-2 pt-10'>
+                    <h2 className='text-lg font-medium text-gray-800 border-b pb-2'>
                         Company Information 
                     </h2>  
                     {/* company logo upload */}
@@ -128,14 +129,14 @@ const EditProfileDetails = ({
                     <div>
                       <label className='block text-sm font-medium text-gray-700 mb-2'>
                         Company Name 
-                        <input 
-                          type='text'
-                          value={formData.companyName}
-                          onChange={(e) => handleInputChange('companyName', e.target.value)}
-                          className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all'
-                          placeholder='Enter company name'
-                        />
                       </label>
+                      <input 
+                        type='text'
+                        value={formData.companyName}
+                        onChange={(e) => handleInputChange('companyName', e.target.value)}
+                        className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-al'
+                        placeholder='Enter company name'
+                      />
                     </div>
 
                     {/* company description */}
@@ -146,13 +147,42 @@ const EditProfileDetails = ({
                       <textarea 
                         value={formData.companyDescription}
                         onChange={(e) => handleInputChange('companyDescription', e.target.value)}
-                        className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all'
+                        className='h-50 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all'
                         row={4}
                         placeholder='Description your company...'
                       />
                     </div>
                   </div>
+                </div>
 
+                {/* active button */}
+                <div className='flex justify-end space-x-4 mt-8 pt-6 border-t'>
+                  <button
+                    onClick={handleCancel}
+                    className='px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors flex items-center space-x-2'
+                  >
+                    <X className='w-4 h-4' />
+                    <span>Cancel</span>
+                  </button>
+
+                  <button
+                    onClick={handleSave}
+                    disabled={saving || uploading.avatar || uploading.logo}
+                    className='px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center space-x-2'
+                  >
+                    {saving ? 
+                      (
+                        <div className='w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin'></div>
+                      )
+                      :
+                      (
+                        <Save className='w-4 h-4' />
+                      )
+                    }
+                    <span>
+                      {saving ? 'Saving...' : 'Save changes'}
+                    </span>
+                  </button>
                 </div>
               </div>
             </div>

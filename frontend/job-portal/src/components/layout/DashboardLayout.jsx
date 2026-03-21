@@ -216,7 +216,6 @@ const DashboardLayout = ({activeMenu, children}) => {
                             email={user?.email || ""}
                             onLogout={logout}
                         />
-
                     </div>
                 </header>
 

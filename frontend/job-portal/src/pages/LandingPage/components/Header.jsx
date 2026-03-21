@@ -6,6 +6,7 @@ import { useAuth } from '../../../context/AuthContext';
 
 const Header = () => {
     const {user, isAuthenticated} = useAuth();
+    console.log(user);
     const navigate = useNavigate(); 
     return (
         <motion.header
@@ -52,7 +53,7 @@ const Header = () => {
                         {isAuthenticated ? (
                             <div className='flex items-center space-x-3'>
                                 <span className='flex items-center space-x-3'>
-                                    Welcome, {user?.fullName}
+                                    Welcome {user?.fullName}
                                 </span>
                                 <a
                                     href={

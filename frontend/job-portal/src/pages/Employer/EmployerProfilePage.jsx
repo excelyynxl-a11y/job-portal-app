@@ -120,12 +120,6 @@ const EmployerProfilePage = () => {
     )
   }
 
-
-
-  console.log('User: ', user);
-  console.log('Form data:', formData);
-  console.log('Profile data:', profileData);
-
   return (
     <DashboardLayout activeMenu='company-profile'>
       <div className='min-h-screen bg-gray-50 py-8 px-4'>

@@ -53,7 +53,6 @@ const ApplicationViewer = () => {
         };
       }
       acc[jobId].applications.push(app);
-      // console.log(acc);
       return acc;
     }, {});
   }, [applications]);
@@ -170,7 +169,6 @@ const ApplicationViewer = () => {
                       <div className='p-6'>
                         <div className='space-y-4'>
                           {applications.map((application) => {
-                            console.log(application);
                             return (
                               <div 
                                 key={application._id}

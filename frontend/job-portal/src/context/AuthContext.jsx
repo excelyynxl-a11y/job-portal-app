@@ -13,8 +13,8 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(null);
-    const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const [loading, setLoading] = useState(true);
+    const [isAuthenticated, setIsAuthenticated] = useState(false); // initally user is unauthenticated
 
     useEffect(() => {
         checkAuthStatus();
