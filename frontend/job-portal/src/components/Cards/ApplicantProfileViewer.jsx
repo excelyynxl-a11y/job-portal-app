@@ -6,7 +6,7 @@ import axiosInstance from '../../utils/axiosInstance';
 import { API_PATHS } from '../../utils/apiPaths';
 import toast from 'react-hot-toast';
 import { Download, X } from 'lucide-react';
-import StatusBadge from '../layout/StatusBadge';
+import StatusBadge from '../StatusBadge';
 const statusOptions = ["Applied", "In Review", "Rejected", "Accepted"]; 
 
 const ApplicantProfileViewer = ({
