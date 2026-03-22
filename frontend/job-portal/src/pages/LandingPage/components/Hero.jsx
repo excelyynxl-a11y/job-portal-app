@@ -53,7 +53,7 @@ const Hero = () => {
                             whileTap={{ scale: 0.98 }}
                             className='group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2'
                             onClick={() => {
-                                navigate("/find-job")
+                                navigate("/find-jobs")
                             }}
                         >
                             <Search className='w-5 h-5' />
