@@ -1,4 +1,8 @@
-export const BASE_URL = "http://localhost:8200";
+// export const BASE_URL = "http://localhost:8200"; // during development
+// export const BASE_URL = "https://job-your-love-job-portal-app-backend.onrender.com"; // after deployment
+
+export const BASE_URL = import.meta.env.VITE_API_URL;
+console.log("API URL:", import.meta.env.VITE_API_URL);
 
 export const API_PATHS = {
     AUTH: {
