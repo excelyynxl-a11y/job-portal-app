@@ -33,7 +33,7 @@ exports.getJobs = async (req, res) => {
         ...(keyword && { title: { $regex: keyword, $options: "i" }}),
         ...(location && { location: { $regex: location, $options: "i" }}),
         ...(category && { category }),
-        ...(type && { category }),
+        ...(type && { type }),
     };
 
     if (minSalary || maxSalary) {
@@ -69,7 +69,7 @@ exports.getJobs = async (req, res) => {
             // application 
             const applications = await Application.find({ applicant: userId }).select("job status");
             applications.forEach((app) => {
-                appliedJobStatusMap(String(app.job)) = app.status;
+                appliedJobStatusMap[String(app.job)] = app.status;
             });
         }
 
