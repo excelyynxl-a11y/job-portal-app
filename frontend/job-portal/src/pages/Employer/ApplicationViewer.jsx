@@ -6,7 +6,7 @@ import { useLocation, useMatch, useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { getInitials } from '../../utils/helper';
 import { ArrowLeft, Briefcase, Calendar, Download, Eye, MapPin, Users } from 'lucide-react';
-import StatusBadge from '../../components/layout/StatusBadge';
+import StatusBadge from '../../components/StatusBadge';
 import ApplicantProfileViewer from '../../components/Cards/ApplicantProfileViewer';
 
 const ApplicationViewer = () => {
