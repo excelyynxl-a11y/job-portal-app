@@ -18,13 +18,22 @@ const analyticsRoutes = require("./routes/analyticsRoutes");
 const app = express();
 
 // middleware to handle CORS 
-app.use(
-    cors({
-        origin: '*',
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-    })
-);
+// app.use(
+//     cors({
+//         origin: '*',
+//         methods: ["GET", "POST", "PUT", "DELETE"],
+//         allowedHeaders: ["Content-Type", "Authorization"],
+//     })
+// );
+app.use(cors({
+  origin: [
+    "http://localhost:5173", // local dev
+    "https://your-frontend.onrender.com" // replace later
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
 
 // connect database 
 connectDB();
