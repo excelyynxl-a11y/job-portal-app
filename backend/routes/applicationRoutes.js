@@ -14,7 +14,7 @@ router.post("/:jobId", protect, applyToJob);
 router.get("/my", protect, getMyApplications);
 router.get("/job/:jobId", protect, getApplicantsForJob);
 router.get("/:id", protect, getApplicationById);
-router.put("/:id/status", protect, updateStatus); // tutorial video uses GET, idk why sial
+router.put("/:id/status", protect, updateStatus); 
 
 module.exports = router; 
 
